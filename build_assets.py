@@ -17,7 +17,7 @@ def delay(i,base=0.15,step=0.12): return f'style="animation-delay:{base+i*step:.
 
 # ---------- HERO ----------
 def hero():
-    s=head("h",1200,440,"Utkarsh Patwa — student developer and competitive programmer")
+    s=head("h",1200,440,"Utkarsh Patwa — student developer and web builder")
     s+=f'''<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="{BG}"/><stop offset=".6" stop-color="#0F1A17"/><stop offset="1" stop-color="{BG}"/></linearGradient>
 <linearGradient id="ed" x1="0" x2="1"><stop stop-color="{MINT}" stop-opacity=".7"/><stop offset="1" stop-color="{CORAL}" stop-opacity=".5"/></linearGradient>
 <linearGradient id="nm" x1="0" x2="1"><stop stop-color="{TXT}"/><stop offset="1" stop-color="{MINT}"/></linearGradient>
@@ -30,12 +30,12 @@ def hero():
     s+=f'<text class="m" x="110" y="45" fill="{MUTED}" font-size="12" letter-spacing="2">~/utkarsh/profile.js</text>'
     s+=f'<text class="m in" x="48" y="120" fill="{MINT}" font-size="13" letter-spacing="4" {delay(0)}>HELLO, WORLD — I AM</text>'
     s+=f'<text class="s in" x="46" y="195" fill="url(#nm)" font-size="76" font-weight="800" letter-spacing="-2" {delay(1)}>Utkarsh Patwa</text>'
-    s+=f'<text class="s in" x="48" y="240" fill="{TXT}" font-size="24" {delay(2)}>Student Developer <tspan fill="{CORAL}">/</tspan> Problem Solver <tspan fill="{CORAL}">/</tspan> Web Builder</text>'
+    s+=f'<text class="s in" x="48" y="240" fill="{TXT}" font-size="24" {delay(2)}>Student Developer <tspan fill="{CORAL}">/</tspan> Web Builder <tspan fill="{CORAL}">/</tspan> Cloud Explorer</text>'
     code=[("const","#C792EA"),]
     lines=[[("const ",CORAL),("me ",TXT),("= {",MUTED)],
            [("  school: ",SKY),('"Mirai School of Technology"',MINT),(",",MUTED)],
            [("  base: ",SKY),('"Ghaziabad, India"',MINT),(",",MUTED)],
-           [("  solves: ",SKY),('["LeetCode", "Codeforces", "CodeChef"]',MINT),(",",MUTED)],
+           [("  focus: ",SKY),('["Web Development", "Cloud Hosting", "Open Source"]',MINT),(",",MUTED)],
            [("};",MUTED)]]
     y=292
     for i,l in enumerate(lines):
@@ -69,24 +69,24 @@ def title(slug,num,label,tag):
 <text class="s in" x="6" y="88" fill="{TXT}" font-size="38" font-weight="800" letter-spacing="-1" {delay(1)}>{esc(tag)}</text>
 <rect x="8" y="100" width="1184" height="2" fill="url(#ln)"/>'''
     return s+'</svg>'
-for slug,num,label,tag in [("title-about","01","about","Code, curiosity, coffee."),("title-cp","02","problem solving","Practice makes patterns."),
-    ("title-work","03","projects","Things I've built so far."),("title-toolkit","04","toolkit","What I build with."),
-    ("title-activity","05","activity","One commit at a time."),("title-connect","06","connect","Let's build something.")]:
+for slug,num,label,tag in [("title-about","01","about","Code, curiosity, coffee."),
+    ("title-work","02","projects","Things I've built so far."),("title-toolkit","03","toolkit","What I build with."),
+    ("title-activity","04","activity","One commit at a time."),("title-connect","05","connect","Let's build something.")]:
     w(slug,title(slug,num,label,tag))
 
 # ---------- ABOUT CARD ----------
 def about():
-    s=head("a",1200,330,"About Utkarsh Patwa: student at Mirai School of Technology, based in Ghaziabad, interested in web development and problem solving.")
+    s=head("a",1200,330,"About Utkarsh Patwa: student at Mirai School of Technology, based in Ghaziabad, interested in web development and cloud technologies.")
     s+=f'<rect x="1" y="1" width="1198" height="328" rx="18" fill="{PANEL}" stroke="{LINE}"/><rect x="1" y="1" width="1198" height="44" rx="18" fill="#0D1513"/><rect x="1" y="30" width="1198" height="15" fill="#0D1513"/>'
     s+=f'<text class="m" x="28" y="29" fill="{MUTED}" font-size="12" letter-spacing="2">about.json</text><text class="m" x="1172" y="29" text-anchor="end" fill="{CORAL}" font-size="12" letter-spacing="2">STATUS: LEARNING IN PUBLIC</text>'
     rows=[("name","Utkarsh Patwa"),("role","Student Developer"),("school","Mirai School of Technology"),("location","Ghaziabad, Uttar Pradesh"),
-          ("interests","web dev · DSA · competitive programming"),("now","shipping projects & solving problems daily")]
+          ("interests","full-stack web · cloud hosting · open source"),("now","shipping projects & learning in public daily")]
     y=95
     for i,(k,v) in enumerate(rows):
         s+=f'<g class="in m" font-size="16" {delay(i,.1,.15)}><text x="48" y="{y}" fill="{SKY}">"{k}"</text><text x="170" y="{y}" fill="{MUTED}">:</text><text x="190" y="{y}" fill="{MINT}">"{esc(v)}"</text></g>'; y+=38
     s+=f'<text class="m" x="28" y="75" fill="{MUTED}" font-size="16">{{</text><text class="m" x="28" y="{y-8}" fill="{MUTED}" font-size="16">}}</text>'
     # right: stats tiles
-    tiles=[("67","REPOSITORIES",MINT),("3","CP PLATFORMS",CORAL),("1","PULL SHARK",SKY)]
+    tiles=[("67","REPOSITORIES",MINT),("189","CONTRIBUTIONS",CORAL),("1","PULL SHARK",SKY)]
     x0=800
     for i,(n,l,c) in enumerate(tiles):
         yy=70+i*80
@@ -94,18 +94,6 @@ def about():
     return s+'</svg>'
 w("about-card",about())
 
-# ---------- COMPETITIVE PROGRAMMING ----------
-def cp():
-    s=head("cp",1200,200,"Competitive programming profiles on LeetCode, Codeforces and CodeChef")
-    items=[("LEETCODE","Utkarsh_Patwa2025",MINT,"{ }"),("CODEFORCES","UTKARSHPATWA2026",CORAL,"</>"),("CODECHEF","utkarsh_patwa",SKY,"#")]
-    for i,(n,u,c,ic) in enumerate(items):
-        x=10+i*400
-        s+=f'<g class="in" {delay(i,.1,.2)}><rect x="{x}" y="4" width="380" height="190" rx="18" fill="{PANEL}" stroke="{c}" stroke-opacity=".55"/>'
-        s+=f'<circle cx="{x+66}" cy="100" r="42" fill="{BG}" stroke="{c}" stroke-width="2"/><text class="m" x="{x+66}" y="110" text-anchor="middle" fill="{c}" font-size="26" font-weight="700">{esc(ic)}</text>'
-        s+=f'<text class="m" x="{x+126}" y="80" fill="{c}" font-size="13" letter-spacing="3">{n}</text><text class="s" x="{x+126}" y="112" fill="{TXT}" font-size="19" font-weight="700">{u}</text>'
-        s+=f'<text class="m" x="{x+126}" y="142" fill="{MUTED}" font-size="12">solving · learning · repeat</text></g>'
-    return s+'</svg>'
-w("cp-card",cp())
 
 # ---------- PROJECT CARDS ----------
 def project(slug,name,desc,tech,c,n):
