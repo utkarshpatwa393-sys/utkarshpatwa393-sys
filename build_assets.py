@@ -6,11 +6,11 @@ SANS='"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif'
 def w(name, s): open(f"assets/{name}.svg","w",encoding="utf-8").write(s)
 def esc(t): return t.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
 STYLE=f"""<style>.m{{font-family:{MONO}}}.s{{font-family:{SANS}}}
-.in{{opacity:0;animation:in .9s cubic-bezier(.16,1,.3,1) forwards}}
-@keyframes in{{from{{opacity:0;transform:translateY(10px)}}to{{opacity:1;transform:none}}}}
+.in{{animation:in .8s cubic-bezier(.16,1,.3,1)}}
+@keyframes in{{from{{opacity:.85;transform:translateY(6px)}}to{{opacity:1;transform:none}}}}
 @keyframes blink{{50%{{opacity:0}}}}@keyframes pulse{{0%,100%{{r:5;opacity:.9}}50%{{r:8;opacity:.35}}}}
 @keyframes dash{{to{{stroke-dashoffset:-60}}}}@keyframes float{{50%{{transform:translateY(-6px)}}}}
-@media(prefers-reduced-motion:reduce){{*{{animation:none!important;opacity:1!important}}}}</style>"""
+@media(prefers-reduced-motion:reduce){{*{{animation:none!important;opacity:1!important;transform:none!important}}}}</style>"""
 def head(id,wd,ht,title):
     return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {wd} {ht}" role="img" aria-label="{esc(title)}"><title>{esc(title)}</title>{STYLE}'
 def delay(i,base=0.15,step=0.12): return f'style="animation-delay:{base+i*step:.2f}s"'
@@ -86,7 +86,7 @@ def about():
         s+=f'<g class="in m" font-size="16" {delay(i,.1,.15)}><text x="48" y="{y}" fill="{SKY}">"{k}"</text><text x="170" y="{y}" fill="{MUTED}">:</text><text x="190" y="{y}" fill="{MINT}">"{esc(v)}"</text></g>'; y+=38
     s+=f'<text class="m" x="28" y="75" fill="{MUTED}" font-size="16">{{</text><text class="m" x="28" y="{y-8}" fill="{MUTED}" font-size="16">}}</text>'
     # right: stats tiles
-    tiles=[("66","REPOSITORIES",MINT),("3","CP PLATFORMS",CORAL),("1","PULL SHARK",SKY)]
+    tiles=[("67","REPOSITORIES",MINT),("3","CP PLATFORMS",CORAL),("1","PULL SHARK",SKY)]
     x0=800
     for i,(n,l,c) in enumerate(tiles):
         yy=70+i*80
@@ -99,11 +99,11 @@ def cp():
     s=head("cp",1200,200,"Competitive programming profiles on LeetCode, Codeforces and CodeChef")
     items=[("LEETCODE","Utkarsh_Patwa2025",MINT,"{ }"),("CODEFORCES","UTKARSHPATWA2026",CORAL,"</>"),("CODECHEF","utkarsh_patwa",SKY,"#")]
     for i,(n,u,c,ic) in enumerate(items):
-        x=i*400+ (0 if i==0 else 0)
-        s+=f'<g class="in" {delay(i,.1,.2)}><rect x="{x+4}" y="4" width="380" height="190" rx="18" fill="{PANEL}" stroke="{c}" stroke-opacity=".55"/>'
-        s+=f'<circle cx="{x+70}" cy="100" r="42" fill="{BG}" stroke="{c}" stroke-width="2"/><text class="m" x="{x+70}" y="110" text-anchor="middle" fill="{c}" font-size="26" font-weight="700">{esc(ic)}</text>'
-        s+=f'<text class="m" x="{x+132}" y="80" fill="{c}" font-size="13" letter-spacing="3">{n}</text><text class="s" x="{x+132}" y="112" fill="{TXT}" font-size="19" font-weight="700">{u}</text>'
-        s+=f'<text class="m" x="{x+132}" y="142" fill="{MUTED}" font-size="12">solving · learning · repeat</text></g>'
+        x=10+i*400
+        s+=f'<g class="in" {delay(i,.1,.2)}><rect x="{x}" y="4" width="380" height="190" rx="18" fill="{PANEL}" stroke="{c}" stroke-opacity=".55"/>'
+        s+=f'<circle cx="{x+66}" cy="100" r="42" fill="{BG}" stroke="{c}" stroke-width="2"/><text class="m" x="{x+66}" y="110" text-anchor="middle" fill="{c}" font-size="26" font-weight="700">{esc(ic)}</text>'
+        s+=f'<text class="m" x="{x+126}" y="80" fill="{c}" font-size="13" letter-spacing="3">{n}</text><text class="s" x="{x+126}" y="112" fill="{TXT}" font-size="19" font-weight="700">{u}</text>'
+        s+=f'<text class="m" x="{x+126}" y="142" fill="{MUTED}" font-size="12">solving · learning · repeat</text></g>'
     return s+'</svg>'
 w("cp-card",cp())
 
@@ -116,9 +116,9 @@ def project(slug,name,desc,tech,c,n):
     # wrap desc
     words=desc.split(); lines=[]; cur=""
     for wd in words:
-        if len(cur)+len(wd)+1>58: lines.append(cur); cur=wd
+        if len(cur)+len(wd)+1>56: lines.append(cur); cur=wd
         else: cur=(cur+" "+wd).strip()
-    lines.append(cur)
+    if cur: lines.append(cur)
     for i,l in enumerate(lines[:2]): s+=f'<text class="s" x="32" y="{114+i*22}" fill="{MUTED}" font-size="15">{esc(l)}</text>'
     x=32
     for t in tech:
@@ -127,18 +127,18 @@ def project(slug,name,desc,tech,c,n):
         x+=wd+8
     s+=f'<text class="m" x="560" y="40" text-anchor="end" fill="{MUTED}" font-size="12">↗</text>'
     return s+'</svg>'
-projects=[("project-jio","Jio Clone","A front-end clone of the Jio website, built to practice layout and responsive design.",["HTML","CSS"],MINT),
-("project-phone","Phone Seller Site","An Android phone seller website with product listings and a clean storefront layout.",["HTML","CSS"],CORAL),
-("project-weather","Weather","A weather app that looks up conditions for a city and shows them at a glance.",["Web","API"],SKY),
-("project-snake","Snake","The classic snake game, rebuilt for the browser as a fun logic exercise.",["Game","Logic"],MINT),
-("project-portfolio","Portfolio","My personal portfolio site, deployed on Vercel, with projects and profile links.",["Web","Vercel"],CORAL),
-("project-mirai","Mirai Web Beta","Forked from the school's web project to learn by reading and improving real code.",["CSS","Fork"],SKY)]
+projects=[("project-jio","Jio Clone","Repository initialized for a Jio clone project, with initial README setup.",["README","Git"],MINT),
+("project-phone","Phone Seller Site","Android phone storefront on AWS using private S3, CloudFront OAC, and CloudFormation.",["HTML/CSS","AWS S3","CloudFront"],CORAL),
+("project-weather","Weather","Repository reserved on GitHub for a weather project; no commits published yet.",["Pending","GitHub"],SKY),
+("project-snake","Snake","Repository reserved on GitHub for a snake game; no code published yet.",["Pending","GitHub"],MINT),
+("project-portfolio","Portfolio","Developer portfolio command center built with React 19 and Tailwind CSS, hosted on Vercel.",["React","Tailwind","Vite","Vercel"],CORAL),
+("project-mirai","Mirai Web Beta","Forked frontend curriculum repository covering HTML, CSS, and JavaScript lectures.",["HTML","CSS","JavaScript","Fork"],SKY)]
 for i,(sl,nm,d,t,c) in enumerate(projects): w(sl,project(sl,nm,d,t,c,i+1))
 
 # ---------- TOOLKIT ----------
 def toolkit():
-    groups=[("LANGUAGES",["HTML","CSS","JavaScript"],MINT),("PRACTICE",["Data Structures","Algorithms","Problem Solving"],CORAL),("WORKFLOW",["Git","GitHub","VS Code","Vercel"],SKY)]
-    s=head("tk",1200,260,"Toolkit: HTML, CSS, JavaScript, data structures and algorithms, Git, GitHub, VS Code and Vercel")
+    groups=[("LANGUAGES",["C++","Python","JavaScript","HTML","CSS"],MINT),("LIBRARIES",["React","Node.js","Express","Tailwind CSS"],CORAL),("WORKFLOW",["Git","GitHub","AWS","Vercel","VS Code"],SKY)]
+    s=head("tk",1200,260,"Toolkit: C++, Python, JavaScript, HTML, CSS, React, Node.js, Express, Tailwind CSS, Git, GitHub, AWS, Vercel, and VS Code")
     s+=f'<rect x="1" y="1" width="1198" height="258" rx="18" fill="{PANEL}" stroke="{LINE}"/>'
     y=50; k=0
     for g,items,c in groups:

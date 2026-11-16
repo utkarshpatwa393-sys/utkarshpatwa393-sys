@@ -18,21 +18,21 @@
 <img src="assets/title-work.svg" width="100%" alt="03 Projects — Things I've built so far.">
 <table>
   <tr>
-    <td width="50%"><a href="https://github.com/utkarshpatwa393-sys/jio"><img src="assets/project-jio.svg" alt="Jio Clone: HTML and CSS website clone."></a></td>
-    <td width="50%"><a href="https://github.com/utkarshpatwa393-sys/Android-Phone-Seller-Website"><img src="assets/project-phone.svg" alt="Android Phone Seller Website built with HTML and CSS."></a></td>
+    <td width="50%"><a href="https://github.com/utkarshpatwa393-sys/jio"><img src="assets/project-jio.svg" alt="Jio Clone: repository initialized for a Jio clone project, with initial README setup."></a></td>
+    <td width="50%"><a href="https://github.com/utkarshpatwa393-sys/Android-Phone-Seller-Website"><img src="assets/project-phone.svg" alt="Phone Seller Site: Android storefront on AWS using private S3, CloudFront OAC, and CloudFormation."></a></td>
   </tr>
   <tr>
-    <td width="50%"><a href="https://github.com/utkarshpatwa393-sys/Weather"><img src="assets/project-weather.svg" alt="Weather app."></a></td>
-    <td width="50%"><a href="https://github.com/utkarshpatwa393-sys/snake-"><img src="assets/project-snake.svg" alt="Snake game."></a></td>
+    <td width="50%"><a href="https://github.com/utkarshpatwa393-sys/Weather"><img src="assets/project-weather.svg" alt="Weather: repository reserved on GitHub for a weather project; no commits published yet."></a></td>
+    <td width="50%"><a href="https://github.com/utkarshpatwa393-sys/snake-"><img src="assets/project-snake.svg" alt="Snake: repository reserved on GitHub for a snake game; no code published yet."></a></td>
   </tr>
   <tr>
-    <td width="50%"><a href="https://my-portfolio-ten-alpha-18.vercel.app/"><img src="assets/project-portfolio.svg" alt="Personal portfolio site deployed on Vercel."></a></td>
-    <td width="50%"><a href="https://github.com/utkarshpatwa393-sys/mirai_web_beta"><img src="assets/project-mirai.svg" alt="Mirai Web Beta, a fork of the school web project."></a></td>
+    <td width="50%"><a href="https://my-portfolio-ten-alpha-18.vercel.app/"><img src="assets/project-portfolio.svg" alt="Portfolio: developer portfolio command center built with React 19 and Tailwind CSS, hosted on Vercel."></a></td>
+    <td width="50%"><a href="https://github.com/utkarshpatwa393-sys/mirai_web_beta"><img src="assets/project-mirai.svg" alt="Mirai Web Beta: forked frontend curriculum repository covering HTML, CSS, and JavaScript lectures."></a></td>
   </tr>
 </table>
 
 <img src="assets/title-toolkit.svg" width="100%" alt="04 Toolkit — What I build with.">
-<img src="assets/toolkit-card.svg" width="100%" alt="Toolkit: HTML, CSS, JavaScript, data structures, algorithms, problem solving, Git, GitHub, VS Code and Vercel.">
+<img src="assets/toolkit-card.svg" width="100%" alt="Toolkit: C++, Python, JavaScript, HTML, CSS, React, Node.js, Express, Tailwind CSS, Git, GitHub, AWS, Vercel, and VS Code.">
 
 <img src="assets/title-activity.svg" width="100%" alt="05 Activity — One commit at a time.">
 <img src="assets/contribution-heatmap.svg" width="100%" alt="Public GitHub contribution heatmap for the last year, refreshed daily.">
